@@ -1,0 +1,11 @@
+// Verify that Windows security events are reaching Microsoft Sentinel.
+// Expected event IDs:
+// 4624: successful logon
+// 4625: failed logon
+// 4688: process creation
+
+SecurityEvent
+| where TimeGenerated > ago(1h)
+| where EventID in (4624, 4625, 4688)
+| project TimeGenerated, Computer, EventID, Activity, Account
+| order by TimeGenerated desc
