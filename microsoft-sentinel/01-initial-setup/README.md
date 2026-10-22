@@ -234,34 +234,4 @@ This provides a working foundation for later projects involving:
 
 Documenting these issues provides a record of the troubleshooting process rather than presenting the deployment as a problem-free installation.
 
----
 
-## Cost Controls
-
-The following measures were used to minimise the possibility of unexpected charges:
-
-- An Azure free trial was used for the project.
-- The Microsoft Sentinel 31-day trial was confirmed as active.
-- Only one Log Analytics workspace was created.
-- A daily ingestion cap of 0.5 GB was configured.
-- The Minimal Windows Security Events collection set was selected.
-- No Azure-hosted virtual machine was deployed.
-- No Sentinel data lake, paid Defender plan or Logic App playbook was enabled.
-- All lab resources were placed in a dedicated resource group for straightforward removal.
-
----
-
-## Security and Privacy
-
-The repository does not include:
-
-- Azure subscription IDs
-- Tenant IDs
-- Workspace IDs
-- Authentication or device codes
-- Payment information
-- Azure Arc onboarding scripts
-- Azure Monitor Agent diagnostic archives
-- Credentials or access tokens
-
-Screenshots should be reviewed and redacted before publication if they expose unnecessary account or Azure identifiers.

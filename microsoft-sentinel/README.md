@@ -24,5 +24,5 @@ The environment is being used to develop practical skills in Windows security te
 
 | Project | Description |
 | :--- | :--- |
-| [01 - Initial Setup](01_initial_setup/README.md) | Configuring Windows telemetry, Azure resources, Microsoft Sentinel and Windows Security Events collection |
+| [01 - Initial Setup](01-initial-setup/README.md) | Configuring Windows telemetry, Azure resources, Microsoft Sentinel and Windows Security Events collection |
 
