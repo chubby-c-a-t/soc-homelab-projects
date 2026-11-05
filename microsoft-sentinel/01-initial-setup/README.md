@@ -1,6 +1,6 @@
 # Microsoft Sentinel Homelab: Initial Setup
 
-This project documents the initial setup of a Microsoft Sentinel homelab using a local Windows 11 LTSC virtual machine.
+This project documents the initial setup of a Microsoft Sentinel homelab using a local Windows 11 virtual machine.
 
 The objective was to create a working telemetry pipeline from a Windows endpoint into Microsoft Sentinel while keeping the environment small, cost-conscious and suitable for later KQL, detection engineering and incident investigation projects.
 
@@ -11,7 +11,7 @@ The objective was to create a working telemetry pipeline from a Windows endpoint
 The lab consists of:
 
 - An Arch Linux virtualisation host
-- A Windows 11 LTSC virtual machine running through KVM/QEMU
+- A Windows 11 virtual machine running through KVM/QEMU
 - Windows Security auditing
 - PowerShell Script Block Logging
 - Sysmon

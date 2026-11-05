@@ -1,0 +1,28 @@
+let LabAccounts =
+    _GetWatchlist('lab-accounts')
+    | project
+        WatchlistAccount = SearchKey,
+        Classification,
+        Notes;
+SecurityEvent
+| where TimeGenerated > ago(10m)
+| where EventID == 4625
+| extend AccountName = extract(@"([^\\]+)$", 1, Account)
+| summarize
+    FailedLogons = count(),
+    FirstSeen = min(TimeGenerated),
+    LastSeen = max(TimeGenerated)
+    by AccountName, Account, Computer
+| where FailedLogons >= 3
+| lookup kind=leftouter LabAccounts
+    on $left.AccountName == $right.WatchlistAccount
+| project
+    AccountName,
+    Account,
+    Computer,
+    FailedLogons,
+    FirstSeen,
+    LastSeen,
+    Classification,
+    Notes
+| order by FailedLogons desc

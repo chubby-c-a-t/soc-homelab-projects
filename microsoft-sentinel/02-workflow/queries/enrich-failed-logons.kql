@@ -1,0 +1,20 @@
+let LabAccounts =
+    _GetWatchlist('lab-accounts')
+    | project
+        WatchlistAccount = SearchKey,
+        Classification,
+        Notes;
+SecurityEvent
+| where EventID == 4625
+| extend AccountName = extract(@"([^\\]+)$", 1, Account)
+| lookup kind=leftouter LabAccounts
+    on $left.AccountName == $right.WatchlistAccount
+| project
+    TimeGenerated,
+    Computer,
+    Account,
+    AccountName,
+    Classification,
+    Notes,
+    Activity
+| order by TimeGenerated desc
