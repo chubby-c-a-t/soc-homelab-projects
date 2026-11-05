@@ -206,7 +206,20 @@ The rule was configured with:
 | MITRE ATT&CK technique | T1110 - Brute Force |
 | Incident creation | Enabled |
 
-Account and host entitynitored account entity
+Account and host entity mappings were configured using `AccountName` and `Computer`.
+
+![Scheduled analytics rule configuration](images/6_analytics_rule.png)
+
+---
+
+## Incident Generation and Investigation
+
+Fresh failed-logon events were generated after the analytics rule was enabled.
+
+The rule created a Microsoft Sentinel incident containing:
+
+- Medium severity
+- The monitored account entity
 - The Windows host entity
 - Credential Access tactic context
 - The originating analytics rule
@@ -214,7 +227,7 @@ Account and host entitynitored account entity
 
 An investigation comment was added to document that the activity was an authorised homelab test and that no containment action was required.
 
-images/7_generated_incident_investigation.png
+![Generated Sentinel incident and mapped entities](images/7_generated_incident_investigation.png)
 
 This confirmed that the KQL detection, analytics rule, incident creation and entity mappings were working together successfully.
 
@@ -244,13 +257,13 @@ The workflow required separate permissions for Microsoft Sentinel and the Logic 
 
 Microsoft Sentinel was granted permission to run playbooks in `rg-sentinel-homelab`.
 
-images/8_granting_sentinel_playbook_permissions.png
+![Microsoft Sentinel permission to run playbooks](images/8_granting_sentinel_playbook_permissions.png)
 
 ### Logic App managed identity
 
 The Logic App managed identity was assigned the `Microsoft Sentinel Responder` role so that the playbook could add comments to Sentinel incidents.
 
-images/9_granting_responder_permissions_to_playbook.png
+![Microsoft Sentinel Responder assigned to the Logic App managed identity](images/9_granting_responder_permissions_to_playbook.png)
 
 These permissions serve different purposes:
 
@@ -273,11 +286,11 @@ The final run shows successful completion of:
 - `Microsoft Sentinel incident`
 - `Add comment to incident (V3)`
 
-images/10_evidence_of_execution_after_failed_attempts.png
+![Successful Logic Apps execution after earlier failed attempts](images/10_evidence_of_execution_after_failed_attempts.png)
 
 The automated triage comment was then visible directly within the generated Sentinel incident.
 
-images/11_screenshot_of_comment.png
+![Automated triage comment visible in the Sentinel incident](images/11_screenshot_of_comment.png)
 
 ---
 
