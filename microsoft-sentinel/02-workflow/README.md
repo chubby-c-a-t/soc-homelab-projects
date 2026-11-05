@@ -202,12 +202,11 @@ The rule was configured with:
 | Query frequency | Every 5 minutes |
 | Lookup period | 10 minutes |
 | Detection threshold | Three or more failed logons |
-| MITREs were generated after the analytics rule was enabled.
+| MITRE ATT&CK tactic | Credential Access |
+| MITRE ATT&CK technique | T1110 - Brute Force |
+| Incident creation | Enabled |
 
-The rule created a Microsoft Sentinel incident containing:
-
-- Medium severity
-- The monitored account entity
+Account and host entitynitored account entity
 - The Windows host entity
 - Credential Access tactic context
 - The originating analytics rule
@@ -356,40 +355,3 @@ The completed solution:
 - Documented the troubleshooting required to restore ingestion and configure SOAR permissions
 
 This project provides practical evidence of working with Microsoft Sentinel as both a SIEM and SOAR platform.
-
----
-
-## Repository Contents
-
-| File | Description |
-| :--- | :--- |
-| watchlists/lab-accounts.csv | Source data used to create the Lab Accounts watchlist |
-| images/1-watchlist-created.png | Watchlist creation summary |
-| images/2-watchlist-in-logs.png | Watchlist queried through Log Analytics |
-| images/3_enriched_failed_logon_query.png | Individual event enriched with watchlist context |
-| images/4_repeated_failed_logins.png | Controlled failed-logon activity |
-| images/5_enriched_failed_logon_query_over_threshold.png | Repeated failed-logon detection |
-| images/6_analytics_rule.png | Scheduled analytics rule |
-| images/7_generated_incident_investigation.png | Generated Sentinel incident |
-| images/8_granting_sentinel_playbook_permissions.png | Sentinel playbook permission configuration |
-| images/9_granting_responder_permissions_to_playbook.png | Logic App managed-identity permission |
-| images/10_evidence_of_execution_after_failed_attempts.png | Successful playbook execution |
-| images/11_screenshot_of_comment.png | Automated comment visible in the incident |
-
----
-
-## Security and Privacy
-
-The repository does not include:
-
-- Azure subscription IDs
-- Tenant IDs
-- Workspace IDs
-- Object IDs
-- Authentication or device codes
-- Passwords
-- Access tokens
-- Azure Arc onboarding scripts
-- Azure Monitor Agent diagnostic archives
-
-The account and hostname visible in the screenshots belong to an isolated homelab environment and do not represent production systems.
